@@ -1,0 +1,8 @@
+c:\users\dolam_000\documents\visual studio 2015\Projects\LiarsDice\LiarsDice\bin\Debug\LiarsDice.exe.config
+c:\users\dolam_000\documents\visual studio 2015\Projects\LiarsDice\LiarsDice\bin\Debug\LiarsDice.exe
+c:\users\dolam_000\documents\visual studio 2015\Projects\LiarsDice\LiarsDice\bin\Debug\LiarsDice.pdb
+c:\users\dolam_000\documents\visual studio 2015\Projects\LiarsDice\LiarsDice\bin\Debug\Dice.dll
+c:\users\dolam_000\documents\visual studio 2015\Projects\LiarsDice\LiarsDice\bin\Debug\Dice.pdb
+c:\users\dolam_000\documents\visual studio 2015\Projects\LiarsDice\LiarsDice\obj\Debug\LiarsDice.csprojResolveAssemblyReference.cache
+c:\users\dolam_000\documents\visual studio 2015\Projects\LiarsDice\LiarsDice\obj\Debug\LiarsDice.exe
+c:\users\dolam_000\documents\visual studio 2015\Projects\LiarsDice\LiarsDice\obj\Debug\LiarsDice.pdb
