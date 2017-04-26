@@ -1,5 +1,0 @@
-c:\users\dolam_000\documents\visual studio 2015\Projects\LiarsDice\Dice\bin\Debug\Dice.dll
-c:\users\dolam_000\documents\visual studio 2015\Projects\LiarsDice\Dice\bin\Debug\Dice.pdb
-c:\users\dolam_000\documents\visual studio 2015\Projects\LiarsDice\Dice\obj\Debug\Dice.csprojResolveAssemblyReference.cache
-c:\users\dolam_000\documents\visual studio 2015\Projects\LiarsDice\Dice\obj\Debug\Dice.dll
-c:\users\dolam_000\documents\visual studio 2015\Projects\LiarsDice\Dice\obj\Debug\Dice.pdb
