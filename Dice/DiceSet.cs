@@ -13,7 +13,11 @@ namespace Dice
 
         public DiceSet(int diceCount = 5)
         {
-            Dice = Enumerable.Repeat(new T(), diceCount).ToList();
+            Dice = new List<T>();
+            for (int i = 0; i < diceCount; i++)
+            {
+                Dice.Add(new T());
+            }
         }
 
         public void RollAll()
