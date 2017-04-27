@@ -11,13 +11,17 @@ namespace LiarsDice
     {
         static void Main(string[] args)
         {
-            var player = new Player("Donnie");
+            var player1 = new Player("Donnie");
+            var player2 = new Player("Kevin");
 
-            player.DiceSet.RollAll();
+            Game game = new Game();
+            game.AddPlayer(player1);
+            game.AddPlayer(player2);
 
-            player.DiceSet.Dice.ForEach(d => Console.WriteLine(d.currentValue));
+            game.PlayRound();
 
             Console.ReadKey();
+            
 
         }
     }

@@ -25,14 +25,14 @@ namespace Dice
             Dice.ForEach(d => d.Roll());
         }
 
-        public void AddDice(int count = 1)
+        public void AddDice(int diceCount = 1)
         {
-            Dice.AddRange(Enumerable.Repeat(new T(), count));
+            Dice.AddRange(Enumerable.Repeat(new T(), diceCount));
         }
 
-        public void RemoveDice(int count = 1)
+        public void RemoveDice(int diceCount = 1)
         {
-            Dice.RemoveRange(0, count);
+            Dice.RemoveRange(0, diceCount);
         }
 
         public IEnumerator GetEnumerator()

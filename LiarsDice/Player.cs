@@ -11,11 +11,17 @@ namespace LiarsDice
     {
         public string Name { get; set; }
         public DiceSet<StandardDie> DiceSet { get; set; }
+        public Wager wager { get; set;  }
 
         public Player(string name)
         {
-            this.Name = name;
+            Name = name;
             DiceSet = new DiceSet<StandardDie>();
+        }
+
+        public void RollDice()
+        {
+            DiceSet.RollAll();
         }
 
     }
