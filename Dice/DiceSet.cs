@@ -10,6 +10,7 @@ namespace Dice
     public class DiceSet<T> : IEnumerable where T : Die, new()
     {
         public List<T> Dice { get; private set; }
+        public int Count { get { return Dice.Count; } private set { } }
 
         public DiceSet(int diceCount = 5)
         {

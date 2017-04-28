@@ -8,8 +8,7 @@ namespace LiarsDice
 {
     class Game
     {
-        private LinkedList<Player> _players;
-        
+        private LinkedList<Player> _players;       
 
         public Game()
         {
@@ -25,12 +24,9 @@ namespace LiarsDice
         {
             var round = new Round(_players);
 
+
         }
 
-        public void NextWager(Func<Wager> wagerFunction)
-        {
-            var wager = wagerFunction;
-            
-        }
+
     }
 }

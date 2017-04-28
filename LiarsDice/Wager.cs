@@ -10,6 +10,6 @@ namespace LiarsDice
     {
         public int DiceCount { get; set; }
         public int FaceValue { get; set; }
-        public bool Challenge { get; set; }
+        public bool isChallenge { get; set; }
     }
 }
