@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using Dice;
 
 namespace LiarsDice
 {
-    class Player
+    internal class Player
     {
         public string Name { get; set; }
         public DiceSet<StandardDie> DiceSet { get; set; }
-        public Wager wager { get; set;  }
-        private Func<Wager> _wagerFunc;
+        public Wager Wager { get; set;  }
+        public IWagerable WagerAction { get; set; }
 
-        public Player(string name, Func<Wager> wagerFunc)
+        public Player(string name)
         {
             Name = name;
-            _wagerFunc = wagerFunc;
             DiceSet = new DiceSet<StandardDie>();
         }
 
@@ -28,7 +28,7 @@ namespace LiarsDice
 
         public void MakeWager()
         {
-            wager = _wagerFunc();
+            Wager = WagerAction.GetWager();
         }
 
     }

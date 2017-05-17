@@ -5,12 +5,11 @@ using Dice;
 
 namespace LiarsDice
 {
-    class Round
+    internal class Round
     {
-        private LinkedList<Player> _players;
+        private readonly LinkedList<Player> _players;
         private LinkedListNode<Player> _activePlayer;
-        public LinkedListNode<Player> previousPlayer
-        { get { return _activePlayer.Previous ?? _players.Last; } }
+        private LinkedListNode<Player> PreviousPlayer => _activePlayer.Previous ?? _players.Last;
         private Player _winner;
         private Player _loser;
         
@@ -47,7 +46,7 @@ namespace LiarsDice
         public void NextWager()
         {
             _activePlayer.Value.MakeWager();
-            CheckWager(_activePlayer.Value.wager, previousPlayer.Value.wager);
+            CheckWager(_activePlayer.Value.Wager, PreviousPlayer.Value.Wager);
             _activePlayer = _activePlayer.Next ?? _players.First;
         }
 
@@ -62,54 +61,46 @@ namespace LiarsDice
 
         private void CheckWagerIsValid(Wager currentWager, Wager previousWager)
         {
-            const int MinFaceValue = 1;
-            const int MaxFaceValue = 6;
+            const int minFaceValue = 1;
+            const int maxFaceValue = 6;
 
-            if (!(MaxFaceValue >= currentWager.FaceValue && currentWager.FaceValue >= MinFaceValue))
-                throw new InvalidWagerException($"The face value must be between {MinFaceValue} and {MaxFaceValue}");
+            if (!(maxFaceValue >= currentWager.FaceValue && currentWager.FaceValue >= minFaceValue))
+                throw new InvalidWagerException($"The face value must be between {minFaceValue} and {maxFaceValue}");
 
             if (currentWager.DiceCount <= 0 || currentWager.DiceCount > GetActiveDiceCount())
                 throw new InvalidWagerException("The wager must be a positive value no greater than the number of dice in play");
 
             if (currentWager.DiceCount < previousWager.DiceCount)
                 throw new InvalidWagerException("The player must wager a number of dice equal to or greater than the previoius wager");
-            if (currentWager.DiceCount == previousWager.DiceCount)
-            {
-                if (currentWager.FaceValue > previousWager.FaceValue) return;
-                else throw new InvalidWagerException("If the number of dice are the same, the player must wager a higher face value");
-            }
-            
+            if (currentWager.DiceCount != previousWager.DiceCount) return;
+            if (currentWager.FaceValue > previousWager.FaceValue) return;
+            throw new InvalidWagerException("If the number of dice are the same, the player must wager a higher face value");
         }
 
         private int GetActiveDiceCount()
         {
-            var activeDiceCount = 0;
-            foreach (var player in _players)
-            {
-                activeDiceCount += player.DiceSet.Count;
-            }
-            return activeDiceCount;
+            return _players.Sum(player => player.DiceSet.Count);
         }
 
         private void DetermineWinnner(Wager previousWager)
         {
             var allDice = GetAllDice();
-            var actualCount = allDice.Where(d => d.currentValue == previousWager.FaceValue).Count();
+            var actualCount = allDice.Count(d => d.currentValue == previousWager.FaceValue);
 
             if (actualCount >= previousWager.DiceCount)
             {
-                _winner = _activePlayer.Previous.Value;
+                if (_activePlayer.Previous != null) _winner = _activePlayer.Previous.Value;
                 _loser = _activePlayer.Value;
             }
             else
             {
                 _winner = _activePlayer.Value;
-                _loser = _activePlayer.Previous.Value;
+                if (_activePlayer.Previous != null) _loser = _activePlayer.Previous.Value;
             }         
             
         }
 
-        private List<StandardDie> GetAllDice()
+        private IEnumerable<StandardDie> GetAllDice()
         {
             var allDice = new List<StandardDie>();
             foreach(var player in _players)

@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleInputWager.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="InvalidWagerException.cs" />
+    <Compile Include="IWagerable.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

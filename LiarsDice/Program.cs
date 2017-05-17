@@ -6,10 +6,13 @@ namespace LiarsDice
     {
         static void Main(string[] args)
         {
-            var player1 = new Player("Donnie", GetWagerFromConsoleInput);
-            var player2 = new Player("Kevin", GetWagerFromConsoleInput);
+            var player1 = new Player("Donnie");
+            var player2 = new Player("Kevin");
 
-            Game game = new Game();
+            player1.WagerAction = new ConsoleInputWager(player1.Name);
+            player2.WagerAction = new ConsoleInputWager(player2.Name);
+
+            var game = new Game();
             game.AddPlayer(player1);
             game.AddPlayer(player2);
 
@@ -19,31 +22,5 @@ namespace LiarsDice
 
         }
 
-        public static Wager GetWagerFromConsoleInput()
-        {
-            var wager = new Wager();
-
-            Console.WriteLine("(R)aise or (C)hallenge?:");
-            var answer = Console.ReadLine();
-
-            if (answer == "R")
-            {
-                Console.WriteLine("How many dice?:");
-                wager.DiceCount = int.Parse(Console.ReadLine());
-                Console.WriteLine("Face value? (1-6):");
-                wager.FaceValue = int.Parse(Console.ReadLine());
-            }
-            else if (answer == "C")
-            {
-                wager.isChallenge = true;
-            }
-            else
-            {
-                Console.WriteLine("Please type 'R' or 'C'");
-                return GetWagerFromConsoleInput();
-            }
-
-            return wager;
-        }
     }
 }

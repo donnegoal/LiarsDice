@@ -1,6 +1,6 @@
 ﻿namespace LiarsDice
 {
-    class Wager
+    public class Wager
     {
         public int DiceCount { get; set; }
         public int FaceValue { get; set; }
